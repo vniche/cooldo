@@ -1,0 +1,117 @@
+@import '~antd/lib/style/themes/default.less';
+
+@nav-header-height: 128px;
+@nav-item-height: 64px;
+
+.account {
+  height: @nav-header-height;
+  position: relative;
+  line-height: @nav-header-height;
+  padding-left: 24px;
+  transition: all 0.3s;
+  background: #002140;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  p, a {
+    transition: opacity 0.3s @ease-in-out, width 0.3s @ease-in-out;
+  }
+  a {
+    height: @nav-item-height;
+    line-height: @nav-item-height;
+  }
+  .avatar {
+    display: inline-block;
+    vertical-align: middle;
+    height: 32px;
+    width: 32px;
+  }
+  .name {
+    height: 32px;
+    line-height: 38px;
+    color: white;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 20px;
+    margin: 0 0 0 12px;
+    font-family: 'Myriad Pro', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    transition: opacity 0.3s @ease-in-out, width 0.3s @ease-in-out;
+    white-space: nowrap;
+  }
+  :global(i.anticon-logout) {
+    margin: 0 10px 0 0;
+  }
+  .logout {
+    display: inline-block;
+  }
+  &.collapsed {
+    height: @nav-item-height;
+    line-height: @nav-item-height;
+    p, a:last-of-type {
+      opacity: 0;
+      width: 0;
+      transition: opacity 0.3s @ease-in-out, width 0.3s @ease-in-out;
+    }
+  }
+}
+
+.sider {
+  min-height: 100vh;
+  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+  position: relative;
+  z-index: 10;
+  &.fixSiderbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    :global(.ant-menu-root) {
+      overflow-y: auto;
+      height: ~'calc(100vh - @{nav-header-height})';
+    }
+  }
+  &.light {
+    box-shadow: 2px 0 8px 0 rgba(29, 35, 41, 0.05);
+    background-color: white;
+    .account {
+      background: white;
+      box-shadow: none;
+      p {
+        color: @primary-color;
+      }
+    }
+    :global(.ant-menu-light) {
+      border-right-color: transparent;
+    }
+  }
+}
+
+.icon {
+  width: 14px;
+  margin-right: 10px;
+}
+
+:global {
+  .drawer .drawer-content {
+    background: #001529;
+  }
+  .ant-menu-inline-collapsed {
+    & > .ant-menu-item .sider-menu-item-img + span,
+    &
+      > .ant-menu-item-group
+      > .ant-menu-item-group-list
+      > .ant-menu-item
+      .sider-menu-item-img
+      + span,
+    & > .ant-menu-submenu > .ant-menu-submenu-title .sider-menu-item-img + span {
+      max-width: 0;
+      display: inline-block;
+      opacity: 0;
+    } 
+  }
+  .ant-menu-item .sider-menu-item-img + span,
+  .ant-menu-submenu-title .sider-menu-item-img + span {
+    transition: opacity 0.3s @ease-in-out, width 0.3s @ease-in-out;
+    opacity: 1;
+  }
+}
